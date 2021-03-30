@@ -11,3 +11,8 @@ nav {
   padding-inline-start: 10px;
   padding-inline-end: 10px;
 }
+
+button#compose-button { 
+  border: none; 
+  background: none;
+}
