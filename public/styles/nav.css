@@ -1,0 +1,13 @@
+nav {
+  position: fixed;
+  top: initial;
+  height: 80px;
+  width: 100%;
+  background-color: #040038;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 27px;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+}
