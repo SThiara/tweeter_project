@@ -1,3 +1,5 @@
+// script that will update the text counter on inputs to the textbox and clicks/keyboard-hits to the "tweet" submit button
+
 $(document).ready(function() {
   $("#tweet-text").on("input", function() {
     var enteredLength = 140 - $(this).val().length;
