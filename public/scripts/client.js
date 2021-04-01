@@ -1,9 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function() {
 
 const createTweetElement = function(tweetObject) {
@@ -33,6 +27,7 @@ const loadTweets = function() {
 $("#new-tweet").submit(function(event) {
   event.preventDefault();
   const tweetBody = document.getElementById("tweet-text").value;
+
   if (tweetBody === "" || tweetBody === undefined) {
     $(".alert").removeClass("alert-accept");
     $(".alert").addClass("alert-deny");
@@ -47,7 +42,8 @@ $("#new-tweet").submit(function(event) {
     $(".alert").text("Tweet content too long!");
     $(".alert").slideDown();
     setTimeout(function() {$(".alert").slideUp()}, 2000);
-  } else {
+  } 
+  else {
   $.post('/tweets', $(this).serialize(), function(data, status) {
     $.get('/tweets', addTweet)
     $(".alert").removeClass("alert-deny");
@@ -55,49 +51,11 @@ $("#new-tweet").submit(function(event) {
     $(".alert").text("Tweet submitted!");
     $(".alert").slideDown();
     setTimeout(function() {$(".alert").slideUp()}, 2000);
-    console.log(status);
+    $("#tweet-text").val("");
   })
-};
+  };
 });
 
 loadTweets();
 
 });
-
-/* $(document).ready(function() {
-  const tweetData = {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-    "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-    "created_at": 1461116232227
-  }
-
-  const mainRef = $("main.container");
-  mainRef.append(createTweetElement(tweetData));
-
-  $("#new-tweet").submit(function(event) {
-    event.preventDefault();
-    console.log($(this).serialize())
-    $.post('/tweets', $(this).serialize(), function(data, status) {
-      alert("\nStatus: " + status);
-    })
-  });
-}); */
-
-
-/* 
-const addTweetsToPage = $(function() {
-  const $button = $('#submit-tweet');
-  $button.on('click', function () {
-    $.ajax('more-posts.html', { method: 'GET' })
-    .then(function (morePostsHtml) {
-      console.log('Success: ', morePostsHtml);
-      $button.replaceWith(morePostsHtml);
-    });
-  });
-}); */
